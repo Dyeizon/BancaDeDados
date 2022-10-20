@@ -11,3 +11,7 @@
  <li>nodemon - ```npm install nodemon -g```</li>
  <li>EJS - ```npm install ejs```</li>
  </ul>
+ 
+ ```javascript
+  npm install express --save
+  ``
