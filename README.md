@@ -12,6 +12,6 @@
  <li>EJS - ```npm install ejs```</li>
  </ul>
  
- ```javascript
+ ```js
   npm install express --save
-  ``
+  ```
