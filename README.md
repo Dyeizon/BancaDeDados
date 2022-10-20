@@ -5,13 +5,7 @@
  
  <ul>
  <li>NodeJS</li>
- <li>ExpressJS - ```javascript
-  npm install express --save
-  ```</li>
- <li>nodemon - ```npm install nodemon -g```</li>
- <li>EJS - ```npm install ejs```</li>
+ <li>ExpressJS - npm install express --save</li>
+ <li>nodemon - npm install nodemon -g</li>
+ <li>EJS - npm install ejs</li>
  </ul>
- 
- ```cli
-  npm install express --save
-  ```
