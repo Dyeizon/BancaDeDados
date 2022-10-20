@@ -1,6 +1,10 @@
 const express = require('express');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
+const connection = require('./database/database');
+
+// Database
+connection.connect();
 
 // Cria uma aplicação Express
 const app = express();
@@ -13,7 +17,7 @@ app.use(express.static('public'));
 
 // Define que a aplicação utilizará o BodyParser para tratar as informações vindas de um formulário
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 // Cria uma rota para a página inicial '/'
 app.get("/", function(req, res) {
@@ -25,8 +29,6 @@ app.post("/cadastrarCliente", (req, res) => {
     var id = req.body.id;
     var nome = req.body.nome;
     var idade = req.body.idade;
-
-    console.log(req);
 
     res.send("Formulário recebido<br>ID: " + id + "<br>Nome: " + nome + "<br>Idade: " + idade);
 });
