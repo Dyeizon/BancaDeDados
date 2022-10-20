@@ -1,8 +1,6 @@
-// Importa o Express
 const express = require('express');
-
-// Importa o EJS
 const ejs = require('ejs');
+const bodyParser = require('body-parser');
 
 // Cria uma aplicação Express
 const app = express();
@@ -13,6 +11,10 @@ app.set('view engine', 'ejs');
 // Define o diretório dos arquivos estáticos (CSS, IMG...)
 app.use(express.static('public'));
 
+// Define que a aplicação utilizará o BodyParser para tratar as informações vindas de um formulário
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
 // Cria uma rota para a página inicial '/'
 app.get("/", function(req, res) {
     res.render('index');
@@ -20,8 +22,14 @@ app.get("/", function(req, res) {
 
 // Cria uma rota que irá coletar os dados do formulário de cadastro de cliente
 app.post("/cadastrarCliente", (req, res) => {
-    res.send("Formulário recebido");
-})
+    var id = req.body.id;
+    var nome = req.body.nome;
+    var idade = req.body.idade;
+
+    console.log(req);
+
+    res.send("Formulário recebido<br>ID: " + id + "<br>Nome: " + nome + "<br>Idade: " + idade);
+});
 
 
 
