@@ -1,0 +1,27 @@
+<%- include ('./partials/head.ejs') %>
+<body>
+    <header>
+        <h1 class="text-center">Banca de Dados</h1>
+    </header>
+
+    <div class="container">
+        <form class="cadastrarCliente" method="post" action="/cadastrarCliente">
+            <div class="mb-3">
+                <label for="id" class="form-label">ID</label>
+                <input type="number" class="form-control" id="id">
+            </div>
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome">
+            </div>
+            <div class="mb-3">
+                <label for="idade" class="form-label">Idade</label>
+                <input type="number" class="form-control" id="idade">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+    
+</body> 
+<%- include ('./partials/foot.ejs') %>
