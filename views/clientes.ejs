@@ -11,8 +11,7 @@
                             <div class="row align-items-start">
                                 <div class="col">
                                     <a href="/clientes/cadastrar">
-                                        <button type="button" class="opcaoSQL btn btn-success">Cadastrar um
-                                            cliente</button>
+                                        <button type="button" class="opcaoSQL btn btn-success">Cadastrar um cliente</button>
                                     </a>
                                 </div>
                             </div>
@@ -29,14 +28,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Dyeizon</td>
-                                    <td>
-                                        <a href="/clientes"><button type="button" class="btn btn-warning">Atualizar</button></a>
-                                        <a href="/clientes"><button type="button" class="btn btn-danger">Remover</button></a>
-                                    </td>
-                                </tr>
+                                <% select.forEach(element => { %>
+                                    <tr>
+                                        <th scope="row">
+                                            <%= element['idcliente'] %>
+                                        </th>
+                                        <td><%= element['nome'] %></td>
+                                        <td>
+                                            <a href="/clientes"><button type="button" class="btn btn-warning">Atualizar</button></a>
+                                            <a href="/clientes"><button type="button" class="btn btn-danger">Remover</button></a>
+                                        </td>
+                                    </tr>
+
+                                <% }); %>
+                                
                             </tbody>
                         </table>
                     </section>

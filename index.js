@@ -32,20 +32,34 @@ app.get("/clientes", function(req, res) {
     const pool = new Pool(credentials);
     const sql = `select * from Cliente`;
 
-    const result = pool.query(sql);
-    pool.end();
+    pool.query(sql).then((result) => {
+        pool.end(); 
+        res.render('clientes', {
+            select: result.rows
+        });
+        });
 
-    res.render('clientes/clientes', {
-        select: result.rows
+
+    
+});
+
+app.get("/clientes/cadastrar", function(req, res) {
+    res.render('operacoes/cadastrar', {
+        nome: 'Cliente',
+        tabela: 'cliente'
     });
 });
+
 
 app.get("/gerentes", function(req, res) {
     res.render('gerentes');
 });
 
-app.get("/operacoes/cadastrar", function(req, res) {
-    res.render("operacoes/cadastrar")
+app.get("/gerentes/cadastrar", function(req, res) {
+    res.render('operacoes/cadastrar', {
+        nome: 'Gerente',
+        tabela: 'gerente'
+    });
 })
 
 app.get("/vendedores", function(req, res) {
@@ -77,16 +91,27 @@ app.get("/notasfiscais", function(req, res) {
 });
 
 // Cria uma rota que irá coletar os dados do formulário de cadastro de cliente
-app.post("/cadastrarCliente", (req, res) => {
-    var nome = req.body.nome;
+app.post("/realizarCadastro", (req, res) => {
+    var tabela = req.body.tabela;
     const pool = new Pool(credentials);
-
-    if(nome) {
-        const sql = `insert into Cliente (nome) values ($1)`;
-        const values = [nome];
     
-        pool.query(sql, values);
-    }
+    if(tabela == 'cliente') {
+        var nome = req.body.nome;
+        if(nome) {
+            const sql = `insert into cliente (nome) values ($1)`;
+            const values = [nome];
+        
+            pool.query(sql, values);
+        }
+    } else if(tabela == 'gerente') {
+        var nome = req.body.nome;
+        if(nome) {
+            const sql = `insert into gerente (nome) values ($1)`;
+            const values = [nome];
+        
+            pool.query(sql, values);
+        }
+    }   
     
     pool.end();
 
