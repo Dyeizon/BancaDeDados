@@ -29,39 +29,51 @@ app.get("/", function(req, res) {
 });
 
 app.get("/clientes", function(req, res) {
-    res.render('clientes');
+    const pool = new Pool(credentials);
+    const sql = `select * from Cliente`;
+
+    const result = pool.query(sql);
+    pool.end();
+
+    res.render('clientes/clientes', {
+        select: result.rows
+    });
 });
 
 app.get("/gerentes", function(req, res) {
     res.render('gerentes');
 });
 
+app.get("/operacoes/cadastrar", function(req, res) {
+    res.render("operacoes/cadastrar")
+})
+
 app.get("/vendedores", function(req, res) {
     res.render('vendedores');
 });
 
 app.get("/produtos", function(req, res) {
-    res.render('produtos');
+    res.render('produtos/produtos');
 });
 
 app.get("/estoques", function(req, res) {
-    res.render('estoques');
+    res.render('estoques/estoques');
 });
 
 app.get("/fornecedores", function(req, res) {
-    res.render('fornecedores');
+    res.render('fornecedores/fornecedores');
 });
 
 app.get("/banca", function(req, res) {
-    res.render('banca');
+    res.render('banca/banca');
 });
 
 app.get("/compras", function(req, res) {
-    res.render('compras');
+    res.render('compras/compras');
 });
 
 app.get("/notasfiscais", function(req, res) {
-    res.render('notasfiscais');
+    res.render('notasfiscais/notasfiscais');
 });
 
 // Cria uma rota que irá coletar os dados do formulário de cadastro de cliente
