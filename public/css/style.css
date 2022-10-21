@@ -1,0 +1,28 @@
+/*
+Color Palette
+
+#CAFFD0 lightgreen
+#008DD5 lightblue
+#16324F darkblue
+#C9E4E7 powderblue
+#CA3CFF pink
+*/
+
+header nav {
+    background-color: #16324F;
+    color: #C9E4E7;
+}
+
+.opcoes {
+    margin-top: 50px;
+}
+
+.opcoes .row {
+    margin-bottom: 20px;
+}
+
+.opcao {
+    width: 80%;
+    padding: 30px;
+    font-size: 1.5em;
+}

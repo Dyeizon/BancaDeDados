@@ -1,0 +1,19 @@
+<%- include ('./partials/head.ejs') %>
+
+
+<body>
+    <%- include ('./partials/navbar.ejs') %>
+    <div class="container">
+        <form class="cadastrarCliente" method="post" action="/cadastrarCliente">
+
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" name="nome" id="nome">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+</body>
+
+<%- include ('./partials/foot.ejs') %>

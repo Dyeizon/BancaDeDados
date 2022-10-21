@@ -1,27 +1,70 @@
 <%- include ('./partials/head.ejs') %>
+
 <body>
-    <header>
-        <h1 class="text-center">Banca de Dados</h1>
-    </header>
+    <%- include ('./partials/navbar.ejs') %>
+    <main>
+        <section class="opcoes">
+            <div class="container text-center">
+                <div class="row align-items-start">
+                    <div class="col">
+                        <a href="/gerentes">
+                            <button type="button" class="opcao btn btn-primary">Gerentes</button>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="/clientes">
+                            <button type="button submit" class="opcao btn btn-primary">Clientes</button>
+                        </a>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <a href="/vendedores">
+                            <button type="button" class="opcao btn btn-primary">Vendedores</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-    <div class="container">
-        <form class="cadastrarCliente" method="post" action="/cadastrarCliente">
-            <div class="mb-3">
-                <label for="id" class="form-label">ID</label>
-                <input type="number" class="form-control" name="id" id="id">
-            </div>
-            <div class="mb-3">
-                <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" name="nome" id="nome">
-            </div>
-            <div class="mb-3">
-                <label for="idade" class="form-label">Idade</label>
-                <input type="number" class="form-control" name="idade" id="idade">
+            <div class="container text-center">
+                <div class="row align-items-start">
+                    <div class="col">
+                        <a href="/produtos">
+                            <button type="button" class="opcao btn btn-primary">Produtos</button>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="/estoques">
+                            <button type="button" class="opcao btn btn-primary">Estoques</button>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="/fornecedores">
+                            <button type="button" class="opcao btn btn-primary">Fornecedores</button>
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-        </form>
-    </div>
-    
-</body> 
+            <div class="container text-center">
+                <div class="row align-items-start">
+                    <div class="col">
+                        <a href="/banca">
+                            <button type="button" class="opcao btn btn-primary">Banca</button>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="/compras">
+                            <button type="button" class="opcao btn btn-primary">Compras</button>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="/notasfiscais">
+                            <button type="button" class="opcao btn btn-primary">Notas Fiscais</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
 <%- include ('./partials/foot.ejs') %>
