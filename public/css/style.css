@@ -11,10 +11,7 @@ Color Palette
 header nav {
     background-color: #16324F;
     color: #C9E4E7;
-}
-
-.opcoes {
-    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .opcoes .row {
@@ -25,4 +22,23 @@ header nav {
     width: 80%;
     padding: 30px;
     font-size: 1.5em;
+}
+
+.opcaoSQL {
+    width: 100%;
+    padding: 10px;
+}
+
+.tabela {
+    margin-top: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.voltar {
+    margin-top: -25px;
+    margin-bottom: 25px;
 }

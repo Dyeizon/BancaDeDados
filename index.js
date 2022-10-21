@@ -32,6 +32,38 @@ app.get("/clientes", function(req, res) {
     res.render('clientes');
 });
 
+app.get("/gerentes", function(req, res) {
+    res.render('gerentes');
+});
+
+app.get("/vendedores", function(req, res) {
+    res.render('vendedores');
+});
+
+app.get("/produtos", function(req, res) {
+    res.render('produtos');
+});
+
+app.get("/estoques", function(req, res) {
+    res.render('estoques');
+});
+
+app.get("/fornecedores", function(req, res) {
+    res.render('fornecedores');
+});
+
+app.get("/banca", function(req, res) {
+    res.render('banca');
+});
+
+app.get("/compras", function(req, res) {
+    res.render('compras');
+});
+
+app.get("/notasfiscais", function(req, res) {
+    res.render('notasfiscais');
+});
+
 // Cria uma rota que irá coletar os dados do formulário de cadastro de cliente
 app.post("/cadastrarCliente", (req, res) => {
     var nome = req.body.nome;
