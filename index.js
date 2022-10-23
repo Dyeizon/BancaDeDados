@@ -1,14 +1,13 @@
 const express = require('express');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
-// const connection = require('./database/database');
+const bcrypt = require("bcrypt");
 
 
 // Database
 const {Pool} = require("pg");
 const credentials = require('./database/credentials')
 
-// connection.connect();
 
 // Cria uma aplicação Express
 const app = express();
@@ -50,6 +49,30 @@ app.get("/clientes/cadastrar", function(req, res) {
     });
 });
 
+app.get("/clientes/atualizar/:clienteId", function(req, res) {
+    const pool = new Pool(credentials);
+    const sql = `select * from Cliente where idcliente='` + req.params.clienteId + `'`;
+
+    pool.query(sql).then((result) => {
+        pool.end(); 
+        res.render('operacoes/atualizar', {
+            nome: 'Cliente',
+            tabela: 'cliente',
+            id: req.params.clienteId,
+            select: result.rows
+        });
+    });
+});
+
+app.get("/clientes/remover/:clienteId", function(req, res) {
+    const pool = new Pool(credentials);
+    const sql = `delete from cliente where idcliente=` + req.params.clienteId;
+
+    pool.query(sql);
+    pool.end();
+
+    res.redirect("/clientes");
+});
 
 app.get("/gerentes", function(req, res) {
     res.render('gerentes');
@@ -90,19 +113,45 @@ app.get("/notasfiscais", function(req, res) {
     res.render('notasfiscais/notasfiscais');
 });
 
-// Cria uma rota que irá coletar os dados do formulário de cadastro de cliente
+// Cria uma rota que irá coletar os dados do formulário de cadastro
 app.post("/realizarCadastro", (req, res) => {
     var tabela = req.body.tabela;
     const pool = new Pool(credentials);
     
+    // Se Cliente
     if(tabela == 'cliente') {
-        var nome = req.body.nome;
-        if(nome) {
-            const sql = `insert into cliente (nome) values ($1)`;
-            const values = [nome];
-        
-            pool.query(sql, values);
+        if(req.body.telefone) {
+            bcrypt.hash(req.body.senha, 10, function(err, hash) {
+                if(!err) {
+                    var senhaCodificada = hash;
+                    const sql = `insert into cliente (nome, telefone, cpf, email, senha) values ($1, $2, $3, $4, $5)`;
+                    const values = [req.body.nome, req.body.telefone, req.body.cpf, req.body.email, senhaCodificada];
+
+                    pool.query(sql, values);
+                    pool.end();
+                } else {
+                    console.log("Ocorreu um erro na encriptação da senha.");
+                }
+            })
+        } else {
+            bcrypt.hash(req.body.senha, 10, function(err, hash) {
+                if(!err) {
+                    var senhaCodificada = hash;
+                    const sql = `insert into cliente (nome, cpf, email, senha) values ($1, $2, $3, $4)`;
+                    const values = [req.body.nome, req.body.cpf, req.body.email, senhaCodificada];
+
+                    pool.query(sql, values);
+                    pool.end();
+                } else {
+                    console.log("Ocorreu um erro na encriptação da senha.");
+                }
+            })
         }
+
+        
+        res.redirect("clientes");
+
+    // Se Gerente
     } else if(tabela == 'gerente') {
         var nome = req.body.nome;
         if(nome) {
@@ -111,12 +160,33 @@ app.post("/realizarCadastro", (req, res) => {
         
             pool.query(sql, values);
         }
-    }   
-    
-    pool.end();
-
-    res.redirect("/");
+    }    
 });
+
+// Cria uma rota que irá coletar os dados do formulário de atualização
+app.post("/atualizarCadastro", (req, res) => {
+    var tabela = req.body.tabela;
+    const pool = new Pool(credentials);
+
+    if(tabela == 'cliente') {
+        const sql = `update cliente set
+                        nome = $1, 
+                        telefone = $2,
+                        cpf = $3,
+                        email = $4
+
+                    where idcliente = $5`;
+
+        const values = [req.body.nome, req.body.telefone, req.body.cpf, req.body.email, req.body.id];
+        pool.query(sql, values);
+
+        pool.end();
+        res.redirect("/clientes");
+    
+    }
+});
+
+
 
 
 // Inicializa o servidor na porta 8080 (variável), e trata um possível erro

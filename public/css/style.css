@@ -4,18 +4,68 @@ Color Palette
 #CAFFD0 lightgreen
 #008DD5 lightblue
 #16324F darkblue
+#295789 darkblue mais fraco
 #C9E4E7 powderblue
 #CA3CFF pink
 */
 
-header nav {
-    background-color: #16324F;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    background-image: url("../img/background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navbar {
+    font-family: 'Merienda', cursive;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.3);
     color: #C9E4E7;
-    margin-bottom: 50px;
+    padding: 10px 0;
+}
+
+.navbar h1, h4 {
+    margin: 0;
+}
+
+.nomeDaEmpresa {
+    font-family: 'Merienda', cursive;
+}
+
+main {
+    margin-top:auto;
+}
+
+.titulo {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer p {
+    margin-right: 40px;
+    padding: 30px 0;
 }
 
 .opcoes .row {
     margin-bottom: 20px;
+}
+
+.opcoes .container:last-child .row {
+    margin-bottom: 0px;
 }
 
 .opcao {
@@ -43,15 +93,18 @@ a {
     margin-bottom: 25px;
 }
 
-.campoCliente {
-    display: flex;
-    align-items: center;
-    padding: 0px 50px;
+.card h4 {
+    margin: 0;
+    padding: 10px 0;
 }
 
-.campoCliente .inputNome {
-    margin-left: 20px;
-    width: 80%;
-    border-radius: 10px;
-
+.submitOperacao {
+    width: 40%;
+    display: block;
+    margin: 0 auto;
 }
+
+.formOperacao {
+    display: inline;
+}
+

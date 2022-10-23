@@ -3,21 +3,49 @@
 <body>
         <%- include ('../partials/navbar.ejs') %>
             <div class="container">
-                <a href="/"><button type="button" class="voltar btn btn-success">Voltar para o início</button></a>
                 <div class="container">
                     <% if (tabela=='cliente') { %>
+                        <a href="/clientes"><button type="button" class="voltar btn btn-success">Voltar para a lista</button></a>
                         <div class="card">
                             <div class="card-header bg-primary text-center">
                                 <h4 class="text-light">Cadastro de <%= nome %></h4>
                             </div>
                             <div class="card-body">
                                 <form action="/realizarCadastro" method="post">
-                                    <div class="mb-3 campoCliente">
-                                      <label for="nome" class="labelNome">Nome</label>
-                                      <input type="text" class="inputNome form-control" name="nome">
-                                      <input type="text" name="tabela" hidden value="<%= tabela %>">
+                                    <div class="row mb-3">
+                                        <input type="text" name="tabela" hidden value="<%= tabela %>">
+
+                                        <div class="col">
+                                            <label for="nome" class="labelNome">Nome</label>
+                                            <input type="text" required class=" form-control" name="nome">
+                                        </div>
+
+                                        <div class="col">
+                                            <label for="telefone" class="labelNome">Telefone</label>
+                                            <input type="tel" pattern="[0-9]{10}|[0-9]{11}" title="(XY) XXXXX-XXXX" placeholder="Não utilize pontuação" class="inputTelefone form-control" name="telefone">
+                                        </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <label for="cpf" class="labelCpf">CPF</label>
+                                            <input type="text" pattern="[0-9]{11}" title="XXX.XXX.XXX-XX" placeholder="Não utilize pontuação" required class="inputCpf form-control" name="cpf">
+                                        </div> 
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <label for="email" class="labelEmail">Email</label>
+                                            <input type="text" required class="inputEmail form-control" name="email">
+                                        </div>
+
+                                        <div class="col">
+                                            <label for="senha" class="labelEmail">Senha</label>
+                                            <input type="password" required class="inputSenha form-control" name="senha">
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary submitCadastro">Cadastrar</button>
                                   </form>
                             </div>
                           </div>                       

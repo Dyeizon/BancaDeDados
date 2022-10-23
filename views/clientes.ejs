@@ -24,6 +24,8 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Nome</th>
+                                    <th scope="col">Telefone</th>
+                                    <th scope="col">CPF</th>
                                     <th scope="col">Operação</th>
                                 </tr>
                             </thead>
@@ -34,9 +36,16 @@
                                             <%= element['idcliente'] %>
                                         </th>
                                         <td><%= element['nome'] %></td>
+                                        <td><%= element['telefone'] %></td>
+                                        <td><%= element['cpf'] %></td>
                                         <td>
-                                            <a href="/clientes"><button type="button" class="btn btn-warning">Atualizar</button></a>
-                                            <a href="/clientes"><button type="button" class="btn btn-danger">Remover</button></a>
+                                            <form class="formOperacao" action="/clientes/atualizar/<%= element['idcliente'] %>" method="get">
+                                                <button type="submit" class="btn btn-warning">Atualizar</button>
+                                            </form>
+
+                                            <form class="formOperacao" action="/clientes/remover/<%= element['idcliente'] %>" method="get">
+                                                <button type="submit" class="btn btn-danger">Remover</button>
+                                            </form>
                                         </td>
                                     </tr>
 
