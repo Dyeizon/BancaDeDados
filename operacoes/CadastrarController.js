@@ -48,7 +48,11 @@ router.post("/realizarCadastro", (req, res) => {
             const values = [nome];
         
             pool.query(sql, values);
+            pool.end();
         }
+        res.redirect("gerentes/pagina/1");
+    } else {
+        res.redirect("/");
     }    
 });
 

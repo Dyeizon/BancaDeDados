@@ -19,13 +19,11 @@
                                         <div class="col">
                                             <label for="nome" class="labelNome">Nome</label>
                                             <input type="text" class=" form-control" value="<%= select[0]['nome'] %>" name="nome">
-                                            <input type="text" hidden class=" form-control" value="<%= select[0]['nome'] %>" name="nomeCadastrado">
                                         </div>
 
                                         <div class="col">
                                             <label for="telefone" class="labelNome">Telefone</label>
                                             <input type="tel" value="<%= select[0]['telefone'] %>" pattern="[0-9]{10}|[0-9]{11}" title="(XY) XXXXX-XXXX" placeholder="Não utilize pontuação" class="inputTelefone form-control" name="telefone">
-                                            <input type="tel" hidden class=" form-control" value="<%= select[0]['telefone'] %>" name="telefoneCadastrado">
                                         </div>
                                     </div>
 
@@ -33,7 +31,6 @@
                                         <div class="col">
                                             <label for="cpf" class="labelCpf">CPF</label>
                                             <input type="text" value="<%= select[0]['cpf'] %>" pattern="[0-9]{11}" title="XXX.XXX.XXX-XX" placeholder="Não utilize pontuação" class="inputCpf form-control" name="cpf">
-                                            <input type="text" hidden class=" form-control" value="<%= select[0]['cpf'] %>" name="cpfCadastrado">
                                         </div> 
                                     </div>
 
@@ -41,7 +38,6 @@
                                         <div class="col">
                                             <label for="email" class="labelEmail">Email</label>
                                             <input type="text" value="<%= select[0]['email'] %>" class="inputEmail form-control" name="email">
-                                            <input type="text" hidden class=" form-control" value="<%= select[0]['email'] %>" name="emailCadastrado">
                                         </div>
 
                                         <div class="col">
@@ -56,18 +52,21 @@
                           </div>                       
 
                     <% } else if(tabela=='gerente') {%>
+                        <a href="/gerentes/pagina/1"><button type="button" class="voltar btn btn-success">Voltar para a lista</button></a>
                         <div class="card">
                             <div class="card-header bg-primary text-center">
-                                <h4 class="text-light">Cadastro de <%= nome %></h4>
+                                <h4 class="text-light">Edição de <%= nome %></h4>
                             </div>
                             <div class="card-body">
-                                <form action="/realizarCadastro" method="post">
-                                    <div class="mb-3 campoCliente">
-                                      <label for="nome" class="labelNome">Nome</label>
-                                      <input type="text" class="inputNome form-control" name="nome">
-                                      <input type="text" name="tabela" hidden value="<%= tabela %>">
+                                <form action="/atualizarCadastro" method="post">
+                                    <div class="mb-3">
+                                        <input type="text" name="tabela" hidden value="<%= tabela %>">
+                                        <input type="text" name="id" hidden value="<%= id %>">
+
+                                        <label for="nome" class="labelNome">Nome</label>
+                                        <input type="text" value="<%= select[0]['nome'] %>" class="inputNome form-control" name="nome">
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                    <button type="submit" class="btn btn-primary submitOperacao">Atualizar</button>
                                   </form>
                             </div>
                           </div>  

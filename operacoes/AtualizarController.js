@@ -44,7 +44,18 @@ router.post("/atualizarCadastro", (req, res) => {
                     pool.end();
         }           
         res.redirect("clientes/pagina/1");   
+    } else if (tabela == 'gerente') {
+        const sql = `update gerente set nome = $1 where idgerente = $2`;
+        const values = [req.body.nome, req.body.id];
+
+        pool.query(sql, values);
+        pool.end();
+        res.redirect("gerentes/pagina/1"); 
+    } else {
+        res.redirect("/");
+
     }
+
 });
 
 module.exports = router;
