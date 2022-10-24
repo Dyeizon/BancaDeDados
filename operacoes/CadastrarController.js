@@ -42,15 +42,33 @@ router.post("/realizarCadastro", (req, res) => {
 
     // Se Gerente
     } else if(tabela == 'gerente') {
-        var nome = req.body.nome;
-        if(nome) {
-            const sql = `insert into gerente (nome) values ($1)`;
-            const values = [nome];
-        
-            pool.query(sql, values);
-            pool.end();
-        }
+        bcrypt.hash(req.body.senha, 10, function(err, hash) {
+            if(!err) {
+                var senhaCodificada = hash;
+                const sql = `insert into gerente (nome, email, senha, salario) values ($1, $2, $3, $4)`;
+                const values = [req.body.nome, req.body.email, senhaCodificada, req.body.salario];
+
+                pool.query(sql, values);
+                pool.end();
+            } else {
+                console.log("Ocorreu um erro na encriptação da senha.");
+            }
+        })
         res.redirect("gerentes/pagina/1");
+    } else if (tabela == 'vendedor') {
+        bcrypt.hash(req.body.senha, 10, function(err, hash) {
+            if(!err) {
+                var senhaCodificada = hash;
+                const sql = `insert into vendedor (nome, email, senha, salario, comissao) values ($1, $2, $3, $4, $5)`;
+                const values = [req.body.nome, req.body.email, senhaCodificada, req.body.salario, req.body.comissao];
+
+                pool.query(sql, values);
+                pool.end();
+            } else {
+                console.log("Ocorreu um erro na encriptação da senha.");
+            }
+        })
+        res.redirect("vendedores/pagina/1");
     } else {
         res.redirect("/");
     }    

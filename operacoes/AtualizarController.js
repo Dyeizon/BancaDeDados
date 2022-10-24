@@ -45,15 +45,77 @@ router.post("/atualizarCadastro", (req, res) => {
         }           
         res.redirect("clientes/pagina/1");   
     } else if (tabela == 'gerente') {
-        const sql = `update gerente set nome = $1 where idgerente = $2`;
-        const values = [req.body.nome, req.body.id];
+        if(req.body.senha) {
+            bcrypt.hash(req.body.senha, 10, function(err, hash) {
+                if(!err) {
+                    var senhaCodificada = hash;
 
-        pool.query(sql, values);
-        pool.end();
+                    const sql = `update gerente set
+                        nome = $1, 
+                        email = $2,
+                        senha = $3,
+                        salario = $4
+
+                        where idgerente = $5`;
+
+                    const values = [req.body.nome, req.body.email, senhaCodificada, req.body.salario, req.body.id];
+                    pool.query(sql, values);
+                    pool.end();
+                } else {
+                    console.log("Ocorreu um erro na encriptação da senha.");
+                }
+            });
+        } else {
+            const sql = `update gerente set
+            nome = $1, 
+            email = $2,
+            salario = $3
+
+            where idgerente = $4`;
+
+            const values = [req.body.nome, req.body.email, req.body.salario, req.body.id];
+            pool.query(sql, values);
+            pool.end();
+        }
         res.redirect("gerentes/pagina/1"); 
+    } else if (tabela == 'vendedor'){
+        if(req.body.senha) {
+            bcrypt.hash(req.body.senha, 10, function(err, hash) {
+                if(!err) {
+                    var senhaCodificada = hash;
+
+                    const sql = `update vendedor set
+                        nome = $1, 
+                        email = $2,
+                        senha = $3,
+                        salario = $4,
+                        comissao = $5
+
+                        where idvendedor = $6`;
+
+                    const values = [req.body.nome, req.body.email, senhaCodificada, req.body.salario, req.body.comissao, req.body.id];
+                    pool.query(sql, values);
+                    pool.end();
+                } else {
+                    console.log("Ocorreu um erro na encriptação da senha.");
+                }
+            });
+        } else {
+            const sql = `update vendedor set
+            nome = $1, 
+            email = $2,
+            salario = $3,
+            comissao = $4
+
+            where idvendedor = $5`;
+
+            const values = [req.body.nome, req.body.email, parseFloat(req.body.salario), req.body.comissao, req.body.id];
+            pool.query(sql, values);
+            pool.end();
+        }
+        res.redirect("vendedores/pagina/1"); 
     } else {
         res.redirect("/");
-
     }
 
 });

@@ -4,7 +4,7 @@
         <%- include ('../partials/navbar.ejs') %>
             <div class="container">
                 <div class="container">
-                    <% if (tabela=='cliente') { %>
+                    <% if (tabela == 'cliente') { %>
                         <a href="/clientes/pagina/1"><button type="button" class="voltar btn btn-success">Voltar para a lista</button></a>
                         <div class="card">
                             <div class="card-header bg-primary text-center">
@@ -50,7 +50,7 @@
                             </div>
                           </div>                       
 
-                    <% } else if(tabela=='gerente') {%>
+                    <% } else if(tabela == 'gerente') {%>
                         <a href="/gerentes/pagina/1"><button type="button" class="voltar btn btn-success">Voltar para a lista</button></a>
                         <div class="card">
                             <div class="card-header bg-primary text-center">
@@ -58,16 +58,81 @@
                             </div>
                             <div class="card-body">
                                 <form action="/realizarCadastro" method="post">
-                                    <div class="mb-3 campoCliente">
-                                      <label for="nome" class="labelNome">Nome</label>
-                                      <input type="text" class="inputNome form-control" name="nome">
-                                      <input type="text" name="tabela" hidden value="<%= tabela %>">
+                                    <div class="mb-3">
+                                        <input type="text" name="tabela" hidden value="<%= tabela %>">
+                                        <div class="row mb-3">
+                                            <div class="col-8">
+                                                <label for="nome">Nome</label>
+                                                <input type="text" required class="form-control" name="nome">
+                                            </div>
+
+                                            <div class="col-4">
+                                                <label for="salario">Salário</label>
+                                                <input type="number" class="form-control" step="0.01" placeholder="Casas decimais com vírgula" name="salario">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label for="email">Email</label>
+                                                <input type="email" required class="form-control" name="email">
+                                            </div>
+
+                                            <div class="col">
+                                                <label for="senha">Senha</label>
+                                                <input type="password" required class="form-control" name="senha">
+                                            </div>
+                                        </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                                   </form>
                             </div>
-                          </div>  
-                    <% }%>
+                          </div>
+                    <% } else if (tabela == 'vendedor') {%>
+                        <a href="/vendedores/pagina/1"><button type="button" class="voltar btn btn-success">Voltar para a lista</button></a>
+                        <div class="card">
+                            <div class="card-header bg-primary text-center">
+                                <h4 class="text-light">Cadastro de <%= nome %></h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="/realizarCadastro" method="post">
+                                    <div class="mb-3">
+                                        <input type="text" name="tabela" hidden value="<%= tabela %>">
+                                        <div class="row mb-3">
+                                            <div class="col-4">
+                                                <label for="nome">Nome</label>
+                                                <input type="text" required class="form-control" name="nome">
+                                            </div>
+
+                                            <div class="col-4">
+                                                <label for="salario">Salário</label>
+                                                <input type="number" class="form-control" step="0.01" placeholder="Casas decimais com vírgula" name="salario">
+                                            </div>
+
+                                            <div class="col-4">
+                                                <label for="comissao">Comissão por venda</label>
+                                                <input type="number" class="form-control" step="0.01" placeholder="Casas decimais com vírgula" name="comissao">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label for="email">Email</label>
+                                                <input type="email" required class="form-control" name="email">
+                                            </div>
+
+                                            <div class="col">
+                                                <label for="senha">Senha</label>
+                                                <input type="password" required class="form-control" name="senha">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                  </form>
+                            </div>
+                          </div>
+                        
+                    <% } %>
                 </div>
             </div>
     </body>

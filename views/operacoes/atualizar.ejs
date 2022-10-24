@@ -63,14 +63,80 @@
                                         <input type="text" name="tabela" hidden value="<%= tabela %>">
                                         <input type="text" name="id" hidden value="<%= id %>">
 
-                                        <label for="nome" class="labelNome">Nome</label>
-                                        <input type="text" value="<%= select[0]['nome'] %>" class="inputNome form-control" name="nome">
+                                        <div class="row mb-3">
+                                            <div class="col-8">
+                                                <label for="nome">Nome</label>
+                                                <input type="text" value="<%= select[0]['nome'] %>" class="form-control" name="nome">
+                                            </div>
+
+                                            <div class="col-4">
+                                                <label for="salario">Salário</label>
+                                                <input type="number" value="<%= select[0]['salario'] %>" class="form-control" step="0.01" placeholder="Casas decimais com vírgula" name="salario">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label for="email">Email</label>
+                                                <input type="email" value="<%= select[0]['email'] %>" class="form-control" name="email">
+                                            </div>
+
+                                            <div class="col">
+                                                <label for="senha">Senha</label>
+                                                <input type="password" class="form-control" name="senha">
+                                            </div>
+                                        </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary submitOperacao">Atualizar</button>
                                   </form>
                             </div>
                           </div>  
-                    <% }%>
+                    <% } else if (tabela == 'vendedor') {%>
+                        <a href="/vendedores/pagina/1"><button type="button" class="voltar btn btn-success">Voltar para a lista</button></a>
+                        <div class="card">
+                            <div class="card-header bg-primary text-center">
+                                <h4 class="text-light">Edição de <%= nome %></h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="/atualizarCadastro" method="post">
+                                    <div class="mb-3">
+                                        <input type="text" name="tabela" hidden value="<%= tabela %>">
+                                        <input type="text" name="id" hidden value="<%= id %>">
+
+                                        <div class="row mb-3">
+                                            <div class="col-4">
+                                                <label for="nome">Nome</label>
+                                                <input type="text" value="<%= select[0]['nome'] %>" class="form-control" name="nome">
+                                            </div>
+
+                                            <div class="col-4">
+                                                <label for="salario">Salário</label>
+                                                <input type="number" value="<%= select[0]['salario'] %>" class="form-control" step="0.01" placeholder="Casas decimais com vírgula" name="salario">
+                                            </div>
+
+                                            <div class="col-4">
+                                                <label for="salario">Comissão</label>
+                                                <input type="number" value="<%= select[0]['comissao'] %>" class="form-control" step="0.01" placeholder="Casas decimais com vírgula" name="comissao">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label for="email">Email</label>
+                                                <input type="email" value="<%= select[0]['email'] %>" class="form-control" name="email">
+                                            </div>
+
+                                            <div class="col">
+                                                <label for="senha">Senha</label>
+                                                <input type="password" class="form-control" name="senha">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary submitOperacao">Atualizar</button>
+                                  </form>
+                            </div>
+                          </div>  
+                    <% } %>
                 </div>
             </div>
     </body>

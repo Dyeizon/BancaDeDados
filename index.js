@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const clientesController = require('./clientes/ClientesController');
 const gerentesController = require('./gerentes/GerentesController');
 const bancaController = require('./banca/BancaController');
+const vendedorController = require('./vendedores/VendedoresController');
+
 const cadastrarController = require('./operacoes/CadastrarController');
 const atualizarController = require('./operacoes/AtualizarController');
 
@@ -29,6 +31,8 @@ app.get("/", function(req, res) {
 app.use("/", clientesController);
 app.use("/", gerentesController);
 app.use("/", bancaController);
+app.use("/", vendedorController);
+
 app.use("/", cadastrarController);
 app.use("/", atualizarController);
 

@@ -3,41 +3,84 @@
 
     <body>
         <%- include ('./partials/navbar.ejs') %>
+
             <div class="container">
-                <a href="/"><button type="button" class="voltar btn btn-success">Voltar para o início</button></a>
-                    <section class="operacoesSQL">
-                        <div class="container text-center">
-                            <div class="row align-items-start">
-                                <div class="col">
-                                    <a href="/vendedores/cadastrar">
-                                        <button type="button" class="opcaoSQL btn btn-success">Cadastrar um vendedor</button>
-                                    </a>
-                                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <a href="/"><button type="button" class="voltar btn btn-success">Voltar para o início</button></a>
+                    <h2 class="text-light mb-0">Página <%= pagina %>
+                    </h2>
+                    <div class="navegarPaginasTabela">
+                        <!-- Botão para retroceder -->
+                        <% if(pagina == 1) { %>
+                            <button disabled type="button" class="btn btn-success"><i class="fa-solid fa-arrow-left"></i></button>
+                        <%} else {%>
+                            <a href="/vendedores/pagina/<%= parseInt(pagina, 10)-1 %>"><button type="button" class="btn btn-success"><i class="fa-solid fa-arrow-left"></i></button></a>
+                        <%}%>
+
+                        <!-- Botão para avançar -->
+                        <% if(select.length < 5) { %>
+                            <button disabled type="button" class="btn btn-success"><i class="fa-solid fa-arrow-right"></i></button>
+                        <%} else {%>
+                            <a href="/vendedores/pagina/<%= parseInt(pagina, 10)+1 %>"><button type="button" class="btn btn-success"><i class="fa-solid fa-arrow-right"></i></button></a>
+                        <%}%>
+                    </div>
+                </div>
+                <section class="operacoesSQL">
+                    <div class="text-center">
+                        <div class="row align-items-start">
+                            <div class="col">
+                                <a href="/vendedores/cadastrar">
+                                    <button type="button" class="opcaoSQL btn btn-success">Cadastrar um vendedor</button>
+                                </a>
                             </div>
                         </div>
-                    </section>
+                    </div>
+                </section>
 
-                    <section class="tabela">
-                        <table class="table table-striped table-hover">
-                            <thead>
+                <section class="tabela">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr style="color: white;">
+                                <th scope="col">ID</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Salário</th>
+                                <th scope="col">Comissão</th>
+                                <th scope="col">Operação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% select.forEach(element=> { %>
                                 <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">Operação</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Dyeizon</td>
+                                    <th scope="row" style="color: white;">
+                                        <%= element['idvendedor'] %>
+                                    </th>
+                                    <td style="color: white;">
+                                        <%= element['nome'] %>
+                                    </td>
+                                    <td style="color: white;">
+                                        <%= 'R$'+element['salario'] %>
+                                    </td>
+                                    <td style="color: white;">
+                                        <%= element['comissao']*100 + '%' %>
+                                    </td>
                                     <td>
-                                        <a href="/vendedores"><button type="button" class="btn btn-warning">Atualizar</button></a>
-                                        <a href="/vendedores"><button type="button" class="btn btn-danger">Remover</button></a>
+                                        <form class="formOperacao"
+                                            action="/vendedores/atualizar/<%= element['idvendedor'] %>" method="get">
+                                            <button type="submit" class="btn btn-warning">Atualizar</button>
+                                        </form>
+
+                                        <form class="formOperacao"
+                                            action="/vendedores/remover/<%= element['idvendedor'] %>" method="get">
+                                            <button type="submit" class="btn btn-danger">Remover</button>
+                                        </form>
                                     </td>
                                 </tr>
-                            </tbody>
-                        </table>
-                    </section>
+
+                                <% }); %>
+
+                        </tbody>
+                    </table>
+                </section>
             </div>
     </body>
 

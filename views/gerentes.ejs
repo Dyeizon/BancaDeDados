@@ -43,6 +43,8 @@
                             <tr style="color: white;">
                                 <th scope="col">ID</th>
                                 <th scope="col">Nome</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Salário</th>
                                 <th scope="col">Operação</th>
                             </tr>
                         </thead>
@@ -54,6 +56,12 @@
                                     </th>
                                     <td style="color: white;">
                                         <%= element['nome'] %>
+                                    </td>
+                                    <td style="color: white;">
+                                        <%= element['email'] %>
+                                    </td>
+                                    <td style="color: white;">
+                                        <%= 'R$'+element['salario'] %>
                                     </td>
                                     <td>
                                         <form class="formOperacao"
