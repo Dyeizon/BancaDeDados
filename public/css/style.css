@@ -80,7 +80,7 @@ footer p {
 }
 
 .tabela {
-    margin-top: 50px;
+    margin-top: 25px;
 }
 
 a {
@@ -117,10 +117,6 @@ a {
     padding: 0;
 }
 
-.infoBanca {
-    margin-top: -50px;    
-}
-
 .infoBanca h1 {
     margin: 0;
 }
@@ -143,4 +139,16 @@ a {
 
 .cardsDashboard .row .col > .card-body > .card > .card-body h5 {
     font-size: 5em;
+}
+
+.navegarPaginasTabela > .btn:first-child {
+    margin-right: 25px;
+}
+
+.navegarPaginasTabela > a:first-child {
+    margin-right: 25px;
+}
+
+.navegarPaginasTabela button {
+    width: 100px;
 }
