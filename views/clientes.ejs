@@ -21,7 +21,7 @@
                     <section class="tabela">
                         <table class="table table-striped table-hover">
                             <thead>
-                                <tr>
+                                <tr style="color: white;">
                                     <th scope="col">ID</th>
                                     <th scope="col">Nome</th>
                                     <th scope="col">Telefone</th>
@@ -32,12 +32,12 @@
                             <tbody>
                                 <% select.forEach(element => { %>
                                     <tr>
-                                        <th scope="row">
+                                        <th scope="row" style="color: white;">
                                             <%= element['idcliente'] %>
                                         </th>
-                                        <td><%= element['nome'] %></td>
-                                        <td><%= element['telefone'] %></td>
-                                        <td><%= element['cpf'] %></td>
+                                        <td style="color: white;"><%= element['nome'] %></td>
+                                        <td style="color: white;"><%= element['telefone'] %></td>
+                                        <td style="color: white;"><%= element['cpf'] %></td>
                                         <td>
                                             <form class="formOperacao" action="/clientes/atualizar/<%= element['idcliente'] %>" method="get">
                                                 <button type="submit" class="btn btn-warning">Atualizar</button>

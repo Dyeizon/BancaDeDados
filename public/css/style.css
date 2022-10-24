@@ -89,7 +89,7 @@ a {
 }
 
 .voltar {
-    margin-top: -25px;
+    margin-top: 25px;
     margin-bottom: 25px;
 }
 
@@ -108,3 +108,39 @@ a {
     display: inline;
 }
 
+.formOperacao button {
+    padding: 0 20px;;
+}
+
+.card-title h4 {
+    font-size: 1em;
+    padding: 0;
+}
+
+.infoBanca {
+    margin-top: -50px;    
+}
+
+.infoBanca h1 {
+    margin: 0;
+}
+
+.cardsDashboard .row .col > .card-body {
+    display: flex;
+    justify-content: center;
+}
+
+.cardsDashboard .row .col > .card-body > .card {
+    width: 80%;
+    height: 200px;
+}
+
+.cardsDashboard .row .col > .card-body > .card > .card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardsDashboard .row .col > .card-body > .card > .card-body h5 {
+    font-size: 5em;
+}
