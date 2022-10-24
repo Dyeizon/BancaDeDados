@@ -223,7 +223,7 @@ app.post("/atualizarCadastro", (req, res) => {
 
 
 // Inicializa o servidor na porta 8080 (variável), e trata um possível erro
-app.listen(8080, function(error) {
+app.listen(80, function(error) {
     if(error) {
         console.log("O servidor não foi inicialiado corretamente.");
     } else {
