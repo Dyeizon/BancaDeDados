@@ -1,64 +1,115 @@
-/*
-Color Palette
-
-#CAFFD0 lightgreen
-#008DD5 lightblue
-#16324F darkblue
-#295789 darkblue mais fraco
-#C9E4E7 powderblue
-#CA3CFF pink
-*/
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
 
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 
-    background-image: url("../img/background.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+
+@media (min-width: 576px) { 
+    /* Página inicial */
+    .opcoes > .container > .row {
+        margin-bottom: 50px;
+    }
+    .opcoes > .container > .row > div {
+        margin-bottom: 50px;
+    }
+
+    .opcoes > .container > .row > div:last-child {
+        margin-bottom: 0px;
+    }
+
+    /* navbar */
+    .navbar {
+        margin-bottom: 25px;
+    }
+
+    .navbar h1 {
+        font-size: 1.5em;
+    }
+
+    .navbar h4 {
+        font-size: 1em;
+    }
+
+    /* Lista  */
+    h2.text-light {
+        font-size: 1em;
+    }
+
+    .navegarPaginasTabela > .btn:first-child {
+        margin-right: 25px;
+    }
+    
+    .navegarPaginasTabela > a:first-child {
+        margin-right: 25px;
+    }
+    
+    .navegarPaginasTabela button {
+        width: 60px;
+    }
 }
 
-.navbar {
-    font-family: 'Merienda', cursive;
-    padding: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    color: #C9E4E7;
-    padding: 10px 0;
+@media (min-width: 768px) {
+    .opcoes > .container > .row > div {
+        font-size: 0.8em;
+    }
+
+    h2.text-light {
+        font-size: 1.5em;
+    }
+
+    .navegarPaginasTabela > .btn:first-child {
+        margin-right: 25px;
+    }
+    
+    .navegarPaginasTabela > a:first-child {
+        margin-right: 25px;
+    }
+    
+    .navegarPaginasTabela button {
+        width: 80px;
+    }
+
+    .cardsDashboard h3 {
+        font-size: 1.2em;
+    }
 }
 
-.navbar h1, h4 {
-    margin: 0;
+@media (min-width: 992px) {
+    .opcoes > .container > .row > div {
+        font-size: 0.6em;
+    }
+
+    .navegarPaginasTabela > .btn:first-child {
+        margin-right: 25px;
+    }
+    
+    .navegarPaginasTabela > a:first-child {
+        margin-right: 25px;
+    }
+    
+    .navegarPaginasTabela button {
+        width: 100px;
+    }
+
+    .cardsDashboard h3 {
+        font-size: 2em;
+    }
 }
 
-.nomeDaEmpresa {
-    font-family: 'Merienda', cursive;
-}
+@media (min-width: 1200px) {
+    .navegarPaginasTabela > .btn:first-child {
+        margin-right: 25px;
+    }
+    
+    .navegarPaginasTabela > a:first-child {
+        margin-right: 25px;
+    }
+    
+    .navegarPaginasTabela button {
+        width: 100px;
+    }
+  }
 
-main {
-    margin-top:auto;
-}
 
-.titulo {
-    font-family: 'Poppins', sans-serif;
-}
-
-
-footer {
-    margin-top: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-footer p {
-    margin-right: 40px;
-    padding: 30px 0;
-}
 
 .opcoes .row {
     margin-bottom: 20px;
@@ -141,14 +192,3 @@ a {
     font-size: 5em;
 }
 
-.navegarPaginasTabela > .btn:first-child {
-    margin-right: 25px;
-}
-
-.navegarPaginasTabela > a:first-child {
-    margin-right: 25px;
-}
-
-.navegarPaginasTabela button {
-    width: 100px;
-}

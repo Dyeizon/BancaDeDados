@@ -1,0 +1,40 @@
+/* Geral */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    background-image: url("../img/background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navbar {
+    font-family: 'Merienda', cursive;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #C9E4E7;
+    padding: 10px 0;
+}
+
+.navbar h1, h4 {
+    margin: 0;
+}
+
+main {
+    margin-top:auto;
+}
+
+footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer p {
+    margin-right: 40px;
+    padding: 30px 0;
+}
