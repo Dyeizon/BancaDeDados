@@ -48,6 +48,13 @@
 }
 
 @media (min-width: 768px) {
+    .opcoes > .container > .row {
+        margin-bottom: 25px;
+    }
+    .opcoes > .container > .row > div {
+        margin-bottom: 0px;
+    }
+
     .opcoes > .container > .row > div {
         font-size: 0.8em;
     }
@@ -74,8 +81,15 @@
 }
 
 @media (min-width: 992px) {
+    .opcoes > .container > .row {
+        margin-bottom: 25px;
+    }
     .opcoes > .container > .row > div {
-        font-size: 0.6em;
+        margin-bottom: 0px;
+    }
+
+    .opcoes > .container > .row > div {
+        font-size: 1em;
     }
 
     .navegarPaginasTabela > .btn:first-child {
@@ -96,6 +110,17 @@
 }
 
 @media (min-width: 1200px) {
+    .opcoes > .container > .row {
+        margin-bottom: 25px;
+    }
+    .opcoes > .container > .row > div {
+        margin-bottom: 0px;
+    }
+
+    .opcoes > .container > .row > div {
+        font-size: 1em;
+    }
+
     .navegarPaginasTabela > .btn:first-child {
         margin-right: 25px;
     }
@@ -108,6 +133,7 @@
         width: 100px;
     }
   }
+
 
 .opcoes .row {
     margin-bottom: 20px;
