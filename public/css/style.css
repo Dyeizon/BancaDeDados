@@ -1,7 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
 
+@media (min-width: 364px) { 
+    .opcoes > .container > .row {
+        margin-bottom: 0px;
+    }
+    .opcoes > .container > .row > div {
+        margin-bottom: 50px;
+    }
 
+    .navbar {
+        margin-bottom: 25px;
+    }
+
+    .navbar h1 {
+        font-size: 1.2em;
+    }
+
+    .navbar h4 {
+        font-size: 0.7em;
+    }
+
+}
+
+@media (min-width: 460px) { 
+    .opcoes > .container > .row {
+        margin-bottom: 0px;
+    }
+    .opcoes > .container > .row > div {
+        margin-bottom: 50px;
+    }
+
+    .navbar {
+        margin-bottom: 25px;
+    }
+
+    .navbar h1 {
+        font-size: 1.5em;
+    }
+
+    .navbar h4 {
+        font-size: 1em;
+    }
+
+}
 
 @media (min-width: 576px) { 
     /* Página inicial */
